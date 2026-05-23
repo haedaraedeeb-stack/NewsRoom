@@ -2,32 +2,49 @@
 
 namespace App\Models;
 
+use APP\Enums\ArticleStatus;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+#[Fillable(['user_id', 'title', 'description', 'status', 'created_at', 'updated_at','published_at', 'archived_at' ,'deleted_at'])]
 class Article extends Model
 {
     use SoftDeletes;
 
+    protected $casts = [
+        'status' => ArticleStatus::class,
+    ];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function comments(): HasMany
+    public function comments(): MorphMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
-    public function attachments(): HasMany
+    public function attachments(): MorphMany
     {
-        return $this->hasMany(Attachment::class);
+        return $this->morphMany(Attachment::class, 'attachable');
     }
 
     public function tags(): belongsToMany
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where(ArticleStatus::Published);
+    }
+
+    public function scopeDraft($query)
+    {
+        return $query->where(ArticleStatus::Draft);
     }
 }

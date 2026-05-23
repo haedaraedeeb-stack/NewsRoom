@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-
+#[Fillable(['body', 'user_id', 'commentable_id', 'commentable_type'])]
 class Comment extends Model
 {
     public function commentable(): MorphTo

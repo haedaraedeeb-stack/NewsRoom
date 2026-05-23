@@ -16,8 +16,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->text('title');
             $table->text('description');
-            $table->string('status')->default('published');
+            $table->string('status')->default('draft');
             $table->softDeletes();
+            $table->timestamp('published_at')->nullable();
+            $table->timestamp('archived_at')->nullable();
             $table->timestamps();
         });
     }

@@ -8,5 +8,5 @@ use PhpParser\Builder\Interface_;
 Interface UserRepositoryInterface
 {
     public function create ($data): User;
-    public function findByEmail ($email);
+    public function findByEmail ($email): ?User;
 }
