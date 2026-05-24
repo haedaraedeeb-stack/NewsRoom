@@ -2,11 +2,13 @@
 
 namespace App\Services;
 
+use App\Jobs\SendArticlePublishedNotificationJob;
 use App\Models\Article;
 use App\Models\User;
 use App\Repositories\Interfaces\ArticleRepositoryInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class ArticleService
 {
@@ -14,15 +16,27 @@ class ArticleService
 
     public function create(array $data): Article
     {
+        $tagIds = $data['tags'] ?? [];
+        unset($data['tags']);
         $data['user_id'] = Auth::id();
         $data['status'] = $data['status'] ?? 'draft';
-        return $this->articleRepository->createArticle($data);
+        $article =  $this->articleRepository->createArticle($data);
+        if (!empty($tagIds)) {
+            $article->tags()->sync($tagIds);
+        }
+        return $article->load('tags');
     }
 
     public function update(int $id, array $data): Article
     {
+        $tagIds = $data['tags'] ?? [];
+        unset($data['tags']);
         $data['user_id'] = Auth::id();
-        return $this->articleRepository->updateArticle($id, $data);
+        $article = $this->articleRepository->updateArticle($id, $data);
+        if (!empty($tagIds)) {
+            $article->tags()->sync($tagIds);
+        }
+        return $article->load('tags');
     }
 
     public function delete(int $id): bool
@@ -47,7 +61,8 @@ class ArticleService
             'status' => 'published',
             'published_at' => now(),
         ]);
-
+        SendArticlePublishedNotificationJob::dispatch($article)
+            ->onQueue('notifications');
         return $article;
     }
 

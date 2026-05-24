@@ -80,12 +80,14 @@ class ArticleController extends Controller
     public function publish(Request $request, int $id)
     {
         $article = $this->articleService->publish($id);
+        $this->authorize('publish', $article);
         return response()->json(['message' => 'Article published successfully', 'article' => $article]);
     }
 
     public function archive(Request $request, int $id)
     {
         $article = $this->articleService->archive($id);
+        $this->authorize('archive', $article);
         return response()->json(['message' => 'Article archived successfully', 'article' => $article]);
     }
 

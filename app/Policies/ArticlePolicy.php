@@ -16,4 +16,14 @@ class ArticlePolicy
     {
         return $user->id === $article->user_id || $user->hasRole('admin');
     }
+
+    public function publish(User $user, Article $article): bool
+    {
+        return $user->id === $article->user_id || $user->hasRole('admin');
+    }
+
+    public function archive(User $user, Article $article): bool
+    {
+        return $user->id === $article->user_id || $user->hasRole('admin');
+    }
 }

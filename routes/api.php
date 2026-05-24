@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('art
 
 Route::get('articles/{articleId}/comments', [CommentController::class, 'index'])->name('comments.index');
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
