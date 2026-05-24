@@ -38,6 +38,6 @@ class ArticleObserver
 
     public function archived(Article $article): void
     {
-        $this->cl
+        $this->clearCache();
     }
 }
