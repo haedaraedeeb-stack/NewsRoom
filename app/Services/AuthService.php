@@ -16,7 +16,7 @@ class AuthService
     public function register(array $data): string
     {
         $user = $this->userRepositoryInterface->create($data);
-        $user->assignRole('reader');
+        $user->assignRole('Reader');
         return $user->createToken('api')->plainTextToken;
     }
 

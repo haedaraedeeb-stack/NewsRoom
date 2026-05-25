@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\V2;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Article\StoreArticleRequest;
 use App\Http\Requests\Article\UpdateArticleRequest;
-use App\Models\Article;
+use App\Http\Resources\V2\ArticleResource;
 use App\Services\ArticleService;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class ArticleController extends Controller
         $user = $request->user();
         $articles = $this->articleService->getAllArticles($user);
         return $this->successResponse(
-            data: ['articles' => $articles],
+            data: ArticleResource::collection($articles),
             message: "Get all articles"
         );
     }
@@ -32,7 +33,7 @@ class ArticleController extends Controller
         $data = $request->validated();
         $article = $this->articleService->create($data);
         return $this->successResponse(
-            data: ['article' => $article],
+            data: new ArticleResource($article),
             message: "Created article successfully .",
             code: 201,
         );
@@ -45,7 +46,7 @@ class ArticleController extends Controller
     {
         $article = $this->articleService->getArticleById($id);
         return $this->successResponse(
-            data: ['article' => $article],
+            data: new ArticleResource($article),
             message: "Get article successfully.",
         );
     }
@@ -59,7 +60,7 @@ class ArticleController extends Controller
         $this->authorize('update', $article);
         $updated = $this->articleService->update($id, $request->validated());
         return $this->successResponse(
-            data: ['article' => $updated],
+            data: new ArticleResource($article),
             message: 'Article updated successfully.',
         );
     }
@@ -81,14 +82,19 @@ class ArticleController extends Controller
     {
         $article = $this->articleService->publish($id);
         $this->authorize('publish', $article);
-        return response()->json(['message' => 'Article published successfully', 'article' => $article]);
+        return $this->successResponse(
+            data: new ArticleResource($article),
+            message: "Article published successfully"
+        );
     }
 
     public function archive(Request $request, int $id)
     {
         $article = $this->articleService->archive($id);
         $this->authorize('archive', $article);
-        return response()->json(['message' => 'Article archived successfully', 'article' => $article]);
+        return $this->successResponse(
+            data: new ArticleResource($article),
+            message: "Article archived successfully"
+        );
     }
-
 }

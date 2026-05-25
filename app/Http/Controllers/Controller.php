@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 abstract class Controller
 {
     use AuthorizesRequests;
-    protected function successResponse( array $data = null, $message = null, $code = 200)
+    protected function successResponse( mixed $data = null, $message = null, $code = 200)
     {
         return response()->json([
             'data' => $data,

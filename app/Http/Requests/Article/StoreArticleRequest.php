@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Article;
 
-use APP\Enums\ArticleStatus;
+use App\Enums\ArticleStatus;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;

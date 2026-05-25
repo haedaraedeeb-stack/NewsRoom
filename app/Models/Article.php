@@ -2,21 +2,26 @@
 
 namespace App\Models;
 
-use APP\Enums\ArticleStatus;
+use App\Enums\ArticleStatus;
+use App\Observers\ArticleObserver;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-#[Fillable(['user_id', 'title', 'description', 'status', 'created_at', 'updated_at','published_at', 'archived_at' ,'deleted_at'])]
+#[Fillable(['user_id', 'title', 'description', 'status', 'created_at',
+    'updated_at','published_at', 'archived_at' ,'deleted_at'])]
+#[ObservedBy(ArticleObserver::class)]
 class Article extends Model
 {
     use SoftDeletes;
 
     protected $casts = [
         'status' => ArticleStatus::class,
+        'published_at' => 'datetime',
     ];
     public function user(): BelongsTo
     {

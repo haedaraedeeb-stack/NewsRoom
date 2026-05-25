@@ -11,3 +11,7 @@ Artisan::command('inspire', function () {
 
 Schedule::job(new SendWeeklyReportJob, 'reports')
     ->weeklyOn(1, '10:00')->name('reports.weekly');
+
+Schedule::command('articles:archive')->monthly();
+
+Schedule::command('articles:report')->weeklyOn(5, '8:00');
