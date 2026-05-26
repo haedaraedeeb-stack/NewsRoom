@@ -40,6 +40,7 @@ class StoreArticleRequest extends FormRequest
             'description' => ['required', 'string', 'min:100', 'max:2000'],
             'tags' => ['nullable', 'array'],
             'tags.*' => ['integer', 'exists:tags,id'],
+            'attachment' => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:2048'],
         ];
     }
 
@@ -57,6 +58,9 @@ class StoreArticleRequest extends FormRequest
             'description.max'      => 'The article content must not exceed 2000 characters.',
             'tags.array'    => 'The tags must be an array.',
             'tags.*.exists' => 'One or more of the selected tags do not exist.',
+            'attachment.mimes' => 'The attachment must be a file of type: jpg, jpeg, png.',
+            'attachment.file'  => 'The attachment must be a file of type: jpg, jpeg, png.',
+            'attachment.max'  => 'The attachment must not exceed 2048.',
         ];
     }
 }

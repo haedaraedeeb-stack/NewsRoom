@@ -163,6 +163,10 @@ Tag
 
 ---
 
+### ApiDog Collection
+استورد ملف `Default module.openapi.json` الموجود في جذر المشروع لـ ApiDog.
+
+
 ### 7. Observer للـ Cache Invalidation
 
 **القرار:** `ArticleObserver` يمسح الكاش تلقائياً عند أي تغيير على المقال
@@ -224,6 +228,13 @@ GET    /api/dashboard
 
 ---
 
+## Storage Link
+```bash
+php artisan storage:link
+```
+لعرض الملفات المرفوعة بشكل صحيح.
+
+---
 ## Artisan Commands
 
 ```bash

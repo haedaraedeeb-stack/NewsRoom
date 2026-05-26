@@ -31,7 +31,9 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         $data = $request->validated();
-        $article = $this->articleService->create($data);
+        $article = $this->articleService->create($data,
+            $request->file('attachment'),
+        );
         return $this->successResponse(
             data: new ArticleResource($article),
             message: "Created article successfully .",

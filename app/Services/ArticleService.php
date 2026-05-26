@@ -6,25 +6,31 @@ use App\Jobs\SendArticlePublishedNotificationJob;
 use App\Models\Article;
 use App\Models\User;
 use App\Repositories\Interfaces\ArticleRepositoryInterface;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class ArticleService
 {
-    public function __construct(private readonly ArticleRepositoryInterface $articleRepository) {}
+    public function __construct(private readonly ArticleRepositoryInterface $articleRepository
+    , private readonly AttachmentService  $attachmentService) {}
 
-    public function create(array $data): Article
+    public function create(array $data, UploadedFile $file = null): Article
     {
         $tagIds = $data['tags'] ?? [];
         unset($data['tags']);
         $data['user_id'] = Auth::id();
         $data['status'] = $data['status'] ?? 'draft';
         $article =  $this->articleRepository->createArticle($data);
+        if ($file)
+        {
+            $files = $this->attachmentService->store($article, $file);
+        }
         if (!empty($tagIds)) {
             $article->tags()->sync($tagIds);
         }
-        return $article->load('tags');
+        return $article->load(['tags', 'attachments']);
     }
 
     public function update(int $id, array $data): Article
@@ -36,7 +42,7 @@ class ArticleService
         if (!empty($tagIds)) {
             $article->tags()->sync($tagIds);
         }
-        return $article->load('tags');
+        return $article->load(['tags', 'attachments']);
     }
 
     public function delete(int $id): bool

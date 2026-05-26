@@ -1,0 +1,1996 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Default module",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/api/register": {
+      "post": {
+        "summary": "Register",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "name": "haedara",
+                "email": "ggggg@gmail.com",
+                "password": "rrttyyuu",
+                "password_confirmation": "rrttyyuu"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "token": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "token"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/logout": {
+      "post": {
+        "summary": "logout",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "null"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/login": {
+      "post": {
+        "summary": "login",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "email": "gggghg@gmail.com",
+                "password": "rrttyyuu"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/articles": {
+      "post": {
+        "summary": "created article",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "title": "hahahahahtbgjjjjthjuhhahhahahahha",
+                "description": "jrhegbdsifhdsjbhjfvjdhvdkjfjhvjdhb bvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhvbvbvbvbvvjhvhgjhjhjhjhjhbghghghhghghghghghghghgjhjhhvdsbhhyfuhkdfjkg",
+                "tags": [
+                  1,
+                  2,
+                  4
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "article": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "user_id": {
+                              "type": "integer"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "title",
+                            "description",
+                            "user_id",
+                            "updated_at",
+                            "created_at",
+                            "id"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "article"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "get all",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "articles": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "user_id": {
+                                "type": "integer"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "deleted_at": {
+                                "type": "null"
+                              },
+                              "created_at": {
+                                "type": "string"
+                              },
+                              "updated_at": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "user_id",
+                              "title",
+                              "description",
+                              "status",
+                              "deleted_at",
+                              "created_at",
+                              "updated_at"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "articles"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/articles/3": {
+      "put": {
+        "summary": "updated",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "title": "hahahahahahhghahb..lkhbhbggdhahahha",
+                "description": "jregbdsifhdsjbhjfvjdhvdkjfjhvjdhb bvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhvbvbvbvbvvjhvhgjhjhjhjhjhbghghghhghghghghghghghgjhjhhvdsbhhyfuhkdfjkg"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "article": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "user_id": {
+                              "type": "integer"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "status": {
+                              "type": "string"
+                            },
+                            "deleted_at": {
+                              "type": "null"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "user_id",
+                            "title",
+                            "description",
+                            "status",
+                            "deleted_at",
+                            "created_at",
+                            "updated_at"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "article"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "delete",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/articles/2": {
+      "get": {
+        "summary": "get by id",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "article": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "user_id": {
+                              "type": "integer"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "status": {
+                              "type": "string"
+                            },
+                            "deleted_at": {
+                              "type": "null"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "user_id",
+                            "title",
+                            "description",
+                            "status",
+                            "deleted_at",
+                            "created_at",
+                            "updated_at"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "article"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/articles/2/publish": {
+      "patch": {
+        "summary": "publish",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "article": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "user_id": {
+                          "type": "integer"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "deleted_at": {
+                          "type": "null"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "archived_at": {
+                          "type": "null"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "user_id",
+                        "title",
+                        "description",
+                        "status",
+                        "deleted_at",
+                        "published_at",
+                        "archived_at",
+                        "created_at",
+                        "updated_at"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "article"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/articles/3/archive": {
+      "patch": {
+        "summary": "archive",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/articles": {
+      "post": {
+        "summary": "created article Copy",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "title": "hahahahahtbgjjjjthjkuhhahhahahahha",
+                "description": "jrhegbdsifhdsjbhjfvjdhvdkjfjhvjdhb bvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhvbvbvbvbvvjhvhgjhjhjhjhjhbghghghhghghghghghghghgjhjhhvdsbhhyfuhkdfjkg",
+                "tags": [
+                  1,
+                  2,
+                  4
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "article": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "user_id": {
+                              "type": "integer"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "title",
+                            "description",
+                            "user_id",
+                            "updated_at",
+                            "created_at",
+                            "id"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "article"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "get all Copy",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "articles": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "user_id": {
+                                "type": "integer"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "deleted_at": {
+                                "type": "null"
+                              },
+                              "created_at": {
+                                "type": "string"
+                              },
+                              "updated_at": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "user_id",
+                              "title",
+                              "description",
+                              "status",
+                              "deleted_at",
+                              "created_at",
+                              "updated_at"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "articles"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/articles/5": {
+      "put": {
+        "summary": "updated Copy",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "title": "hahahafghahahhghahb..lkhbhbggdhahahha",
+                "description": "jregbdsifhdsjbhjfvjdhvdkjfjhvjdhb bvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhvbvbvbvbvvjhvhgjhjhjhjhjhbghghghhghghghghghghghgjhjhhvdsbhhyfuhkdfjkg"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "article": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "user_id": {
+                              "type": "integer"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "status": {
+                              "type": "string"
+                            },
+                            "deleted_at": {
+                              "type": "null"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "user_id",
+                            "title",
+                            "description",
+                            "status",
+                            "deleted_at",
+                            "created_at",
+                            "updated_at"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "article"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "get by id Copy",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "article": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "user_id": {
+                              "type": "integer"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "status": {
+                              "type": "string"
+                            },
+                            "deleted_at": {
+                              "type": "null"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "user_id",
+                            "title",
+                            "description",
+                            "status",
+                            "deleted_at",
+                            "created_at",
+                            "updated_at"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "article"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "delete Copy",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/articles/5/publish": {
+      "patch": {
+        "summary": "publish Copy",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "article": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "user_id": {
+                          "type": "integer"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "deleted_at": {
+                          "type": "null"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "archived_at": {
+                          "type": "null"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "user_id",
+                        "title",
+                        "description",
+                        "status",
+                        "deleted_at",
+                        "published_at",
+                        "archived_at",
+                        "created_at",
+                        "updated_at"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "article"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v2/articles/5/archive": {
+      "patch": {
+        "summary": "archive Copy",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/articles/1/comments": {
+      "post": {
+        "summary": "create comment",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "body": "haahahah it will be fun hh dvbfdhrei fdhvreuf"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "get all comment",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/comments/1": {
+      "put": {
+        "summary": "update",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "body": "hghghghghghghhghghghghhghghghghgh"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "comment": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "commentable_type": {
+                              "type": "string"
+                            },
+                            "commentable_id": {
+                              "type": "integer"
+                            },
+                            "user_id": {
+                              "type": "integer"
+                            },
+                            "body": {
+                              "type": "string"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "commentable_type",
+                            "commentable_id",
+                            "user_id",
+                            "body",
+                            "created_at",
+                            "updated_at"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "comment"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "delete",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/dashboard": {
+      "get": {
+        "summary": "get states",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/profile": {
+      "post": {
+        "summary": "createProfile",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "birth_date": {
+                    "example": "2001-08-15",
+                    "type": "string"
+                  },
+                  "gender": {
+                    "example": "male",
+                    "type": "string"
+                  },
+                  "nationality": {
+                    "example": "Syrian",
+                    "type": "string"
+                  },
+                  "job_title": {
+                    "example": "Backend PHP Laravel Developer",
+                    "type": "string"
+                  },
+                  "attachment": {
+                    "format": "binary",
+                    "type": "string",
+                    "example": "file://C:\\Users\\haedr\\Pictures\\depositphotos_86446164-stock-photo-business-man-in-office - Copy.jpg"
+                  }
+                }
+              },
+              "examples": {}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "update",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "birth_date": "2001-08-15",
+                "gender": "male",
+                "nationality": "Syrian",
+                "job_title": "Senior Backend PHP Laravel Developer"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "get profile",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "profile": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "user_id": {
+                              "type": "integer"
+                            },
+                            "birth_date": {
+                              "type": "string"
+                            },
+                            "gender": {
+                              "type": "string"
+                            },
+                            "nationality": {
+                              "type": "string"
+                            },
+                            "job_title": {
+                              "type": "string"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "user_id",
+                            "birth_date",
+                            "gender",
+                            "nationality",
+                            "job_title",
+                            "created_at",
+                            "updated_at"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "profile"
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "message",
+                    "code"
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "servers": [],
+  "security": []
+}

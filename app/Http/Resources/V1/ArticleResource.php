@@ -20,6 +20,10 @@ class ArticleResource extends JsonResource
             'writer' => $this->user->name,
             'published_at' => $this->published_at?->format('Y-m-d H:i:s'),
             'created_at' => $this->created_at?->format('Y-m-d H:i:s'),
+            'attachments'  => $this->attachments->map(fn($attachment) => [
+                'url'  => asset('storage/' . $attachment->file_path),
+                'type' => $attachment->file_type,
+            ]),
         ];
     }
 }

@@ -10,7 +10,9 @@ use App\Repositories\ArticleRepository;
 use App\Repositories\CommentRepository;
 use App\Repositories\Interfaces\ArticleRepositoryInterface;
 use App\Repositories\Interfaces\CommentRepositoryInterface;
+use App\Repositories\Interfaces\UserProfileRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\UserProfileRepository;
 use App\Repositories\UserRepository;
 use App\Services\DatabaseNotificationService;
 use App\Services\EmailNotificationService;
@@ -32,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(ArticleRepositoryInterface::class, ArticleRepository::class);
         $this->app->bind(CommentRepositoryInterface::class, CommentRepository::class);
+        $this->app->bind(UserProfileRepositoryInterface::class, UserProfileRepository::class);
 
     }
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\V1\ArticleController as ArticleControllerV1;
 use App\Http\Controllers\V2\ArticleController as ArticleControllerV2;
 use Illuminate\Support\Facades\Route;
@@ -36,5 +37,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::patch('articles/{id}/archive', [ArticleControllerV2::class, 'archive'])->name('articles.archive');
         Route::apiResource('articles', ArticleControllerV2::class);
         });
+    Route::get('profile', [UserProfileController::class, 'show'])->name('profile.show');
+    Route::post('profile', [UserProfileController::class, 'store'])->name('profile.store');
+    Route::put('profile', [UserProfileController::class, 'update'])->name('profile.update');
     });
 });

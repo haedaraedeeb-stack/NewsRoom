@@ -23,6 +23,10 @@ class ArticleResource extends JsonResource
             'tags' => $this->tags->pluck('name'),
             'comments_count' => $this->comments_count,
             'reading_time' => ceil(str_word_count($this->description) / 200) . ' min',
+            'attachments'  => $this->attachments->map(fn($attachment) => [
+                'url'  => asset('storage/' . $attachment->file_path),
+                'type' => $attachment->file_type,
+            ]),
         ];
     }
 }
