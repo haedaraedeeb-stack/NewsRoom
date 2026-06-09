@@ -12,7 +12,7 @@ abstract class Controller
             'data' => $data,
             'message' => $message,
             'code' => $code,
-        ]);
+        ], $code);
     }
 
     protected function errorResponse(array $data = null, $message = null, $code = 400)

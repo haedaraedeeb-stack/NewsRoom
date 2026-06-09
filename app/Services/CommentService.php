@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Comment;
 use App\Models\Article;
+use App\Notifications\NewCommentNotification;
 use App\Repositories\Interfaces\CommentRepositoryInterface;
 use Illuminate\Support\Collection;
 
@@ -20,12 +21,17 @@ class CommentService
 
     public function create(Article $article, int $userId, array $data): Comment
     {
-        return $this->commentRepository->create([
+        $comment = $this->commentRepository->create([
             'body'             => $data['body'],
             'user_id'          => $userId,
             'commentable_type' => Article::class,
             'commentable_id'   => $article->id,
         ]);
+
+        if ($article->user_id !== $userId) {
+            $article->user->notify(new NewCommentNotification($comment));
+        }
+        return $comment;
     }
 
     public function update(int $id, array $data): Comment
