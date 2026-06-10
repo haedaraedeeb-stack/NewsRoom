@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Article\StoreArticleRequest;
 use App\Http\Requests\Article\UpdateArticleRequest;
 use App\Http\Resources\V1\ArticleResource;
+use App\Models\Article;
 use App\Services\ArticleService;
 use Illuminate\Http\Request;
 
@@ -19,10 +20,9 @@ class ArticleController extends Controller
     {
         $user = $request->user();
         $articles = $this->articleService->getAllArticles($user);
-        return $this->successResponse(
-            data: ArticleResource::collection($articles),
-            message: "Get all articles"
-        );
+        return ArticleResource::collection($articles)->additional([
+            'message' => "Get all articles"
+        ]);
     }
 
     /**
@@ -62,7 +62,7 @@ class ArticleController extends Controller
         $this->authorize('update', $article);
         $updated = $this->articleService->update($id, $request->validated());
         return $this->successResponse(
-            data: new ArticleResource($article),
+            data: new ArticleResource($updated),
             message: 'Article updated successfully.',
         );
     }
@@ -82,10 +82,11 @@ class ArticleController extends Controller
 
     public function publish(Request $request, int $id)
     {
-        $article = $this->articleService->publish($id);
+        $article = $this->articleService->getArticleById($id);
         $this->authorize('publish', $article);
+        $publishedArticle = $this->articleService->publish($id);
         return $this->successResponse(
-            data: new ArticleResource($article),
+            data: new ArticleResource($publishedArticle),
             message: "Article published successfully"
         );
     }

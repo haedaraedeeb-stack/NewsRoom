@@ -6,11 +6,12 @@ use App\Enums\ArticleStatus;
 use App\Models\Article;
 use App\Models\User;
 use App\Repositories\Interfaces\ArticleRepositoryInterface;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
 class ArticleRepository implements ArticleRepositoryInterface
 {
-    public function getAll(?User $user = null): Collection
+    public function getAll(?User $user = null, int $perPage = 10): LengthAwarePaginator
     {
         if (!$user)
         {
@@ -26,7 +27,7 @@ class ArticleRepository implements ArticleRepositoryInterface
                     $query->where('user_id', $user->id)
                         ->whereIn('status', [ArticleStatus::Draft, ArticleStatus::Archived]);
                 });
-        })->latest()->get();
+        })->latest()->paginate($perPage);
     }
 
     public function createArticle(array $data): Article

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
@@ -26,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
     // V1
     Route::prefix('v1')->name('v1.')->group(function () {
+        Route::post('articles/{article}/attachment', [AttachmentController::class, 'upload'])->name('articles.attachment');
         Route::patch('articles/{id}/publish', [ArticleControllerV1::class, 'publish'])->name('articles.publish');
         Route::patch('articles/{id}/archive', [ArticleControllerV1::class, 'archive'])->name('articles.archive');
         Route::apiResource('articles', ArticleControllerV1::class);

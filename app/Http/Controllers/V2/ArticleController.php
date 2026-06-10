@@ -19,10 +19,9 @@ class ArticleController extends Controller
     {
         $user = $request->user();
         $articles = $this->articleService->getAllArticles($user);
-        return $this->successResponse(
-            data: ArticleResource::collection($articles),
-            message: "Get all articles"
-        );
+        return \App\Http\Resources\V1\ArticleResource::collection($articles)->additional([
+            'message' => "Get all articles"
+        ]);
     }
 
     /**

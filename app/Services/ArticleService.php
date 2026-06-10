@@ -3,13 +3,16 @@
 namespace App\Services;
 
 use App\Jobs\SendArticlePublishedNotificationJob;
+use App\Mail\ArticlePublishedMail;
 use App\Models\Article;
 use App\Models\User;
 use App\Repositories\Interfaces\ArticleRepositoryInterface;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Mail;
 
 class ArticleService
 {
@@ -50,7 +53,7 @@ class ArticleService
         return $this->articleRepository->deleteArticle($id);
     }
 
-    public function getAllArticles(?User $user = null): Collection
+    public function getAllArticles(?User $user = null, int $perPage = 10): LengthAwarePaginator
     {
         return $this->articleRepository->getAll($user);
     }
@@ -67,6 +70,7 @@ class ArticleService
             'status' => 'published',
             'published_at' => now(),
         ]);
+        Mail::to($article->user->email)->queue(new ArticlePublishedMail($article));
         SendArticlePublishedNotificationJob::dispatch($article)
             ->onQueue('notifications');
         return $article;

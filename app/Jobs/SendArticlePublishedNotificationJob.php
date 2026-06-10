@@ -5,7 +5,6 @@ namespace App\Jobs;
 use App\Contracts\NotificationServiceInterface;
 use App\Models\Article;
 use App\Models\User;
-use App\Notifications\ArticlePublishedNotification;
 use App\Services\DatabaseNotificationService;
 use App\Services\EmailNotificationService;
 use Illuminate\Contracts\Queue\ShouldQueue;
