@@ -46,7 +46,7 @@ it('returns 200 and queues an email to the writer when article is published', fu
 
     $response->assertStatus(200);
 
-    Mail::assertQueued(ArticlePublishedMail::class, function(ArticlePublishedMail $mail) use ($user){
+    Mail::assertSent(ArticlePublishedMail::class, function(ArticlePublishedMail $mail) use ($user){
         return $mail->hasTo($user->email);
     });
 });
@@ -91,7 +91,7 @@ it('returns 403 and does not queue an email when an unauthorized user attempts t
 
     $response->assertStatus(403);
 
-    Mail::assertNothingQueued();
+    Mail::assertNothingSent();
 });
 
 /**

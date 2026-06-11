@@ -11,7 +11,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ArticlePublishedMail extends Mailable implements ShouldQueue
+class ArticlePublishedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,6 +29,7 @@ class ArticlePublishedMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
+            to: [$this->article->user->email],
             subject: 'Your Article Has Been Published!',
 
         );

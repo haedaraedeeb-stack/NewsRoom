@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\NotifySubscribersJob;
 use App\Jobs\SendArticlePublishedNotificationJob;
 use App\Mail\ArticlePublishedMail;
 use App\Models\Article;
@@ -70,7 +71,7 @@ class ArticleService
             'status' => 'published',
             'published_at' => now(),
         ]);
-        Mail::to($article->user->email)->queue(new ArticlePublishedMail($article));
+        NotifySubscribersJob::dispatch($article);
         SendArticlePublishedNotificationJob::dispatch($article)
             ->onQueue('notifications');
         return $article;

@@ -16,7 +16,7 @@ class NewCommentNotification extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      */
-    public function __construct(Comment $comment)
+    public function __construct(private Comment $comment)
     {
         //
     }
@@ -28,6 +28,10 @@ class NewCommentNotification extends Notification implements ShouldQueue
      */
     public function via(object $notifiable): array
     {
+        if($notifiable->hasRole('admin'))
+        {
+            return ['database'];
+        }
         return ['mail'];
     }
 
